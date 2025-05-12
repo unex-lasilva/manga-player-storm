@@ -1,0 +1,51 @@
+movieId,title,genres
+1,Um Sonho de Liberdade,Drama
+2,O Poderoso Chefão,Crime|Drama
+3,Batman: O Cavaleiro das Trevas,Action|Crime|Drama
+4,Pulp Fiction,Crime|Drama
+5,A Lista de Schindler,Biography|Drama|History
+6,O Senhor dos Anéis: A Sociedade do Anel,Adventure|Drama|Fantasy
+7,O Senhor dos Anéis: As Duas Torres,Adventure|Drama|Fantasy
+8,O Senhor dos Anéis: O Retorno do Rei,Adventure|Drama|Fantasy
+9,Forrest Gump: O Contador de Histórias,Drama|Romance
+10,A Origem,Action|Adventure|Sci-Fi
+11,Matrix,Action|Sci-Fi
+12,Clube da Luta,Drama
+13,Interestelar,Adventure|Drama|Sci-Fi
+14,O Rei Leão,Animation|Adventure|Drama
+15,Jurassic Park,Adventure|Sci-Fi
+16,Titanic,Drama|Romance
+17,Gladiador,Action|Adventure|Drama
+18,Os Vingadores,Action|Adventure|Sci-Fi
+19,Star Wars: Episódio IV - Uma Nova Esperança,Action|Adventure|Sci-Fi
+20,Star Wars: Episódio V - O Império Contra-Ataca,Action|Adventure|Sci-Fi
+21,Vingadores: Ultimato,Action|Adventure|Sci-Fi
+22,Coringa,Crime|Drama|Thriller
+23,Parasita,Comedy|Drama|Thriller
+24,La La Land: Cantando Estações,Comedy|Drama|Music
+25,Vingadores: Guerra Infinita,Action|Adventure|Sci-Fi
+26,Pantera Negra,Action|Adventure|Sci-Fi
+27,Guardiões da Galáxia,Action|Adventure|Sci-Fi
+28,Guardiões da Galáxia Vol. 2,Action|Adventure|Sci-Fi
+29,O Batman,Action|Crime|Drama
+30,Duna,Adventure|Drama|Sci-Fi
+31,Tenet,Action|Sci-Fi|Thriller
+32,1917,Drama|War
+33,Tudo em Todo Lugar ao Mesmo Tempo,Comedy|Drama|Sci-Fi
+34,Top Gun: Maverick,Action|Drama
+35,Homem-Aranha: Sem Volta Para Casa,Action|Adventure|Sci-Fi
+36,Jumanji: Bem-vindo à Selva,Action|Adventure|Comedy
+37,Jumanji: Próxima Fase,Action|Adventure|Comedy
+38,Jurassic World: Domínio,Action|Adventure|Sci-Fi
+39,O Irlandês,Crime|Drama
+40,Era Uma Vez em... Hollywood,Comedy|Drama
+41,Mad Max: Estrada da Fúria,Action|Adventure
+42,A Rede Social,Biography|Drama
+43,Spotlight: Segredos Revelados,Biography|Crime|Drama
+44,Gravidade,Drama|Sci-Fi|Thriller
+45,Perdido em Marte,Adventure|Drama|Sci-Fi
+46,Bohemian Rhapsody,Biography|Drama|Music
+47,Viúva Negra,Action|Adventure|Sci-Fi
+48,Shang-Chi e a Lenda dos Dez Anéis,Action|Adventure|Fantasy
+49,O Esquadrão Suicida,Action|Adventure|Comedy
+50,Missão Impossível – Efeito Fallout,Action|Adventure|Thriller
