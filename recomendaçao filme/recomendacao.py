@@ -65,3 +65,38 @@ def generate_rules(freq_itemsets, min_confidence):
                 if conf >= min_confidence:
                     rules.append((A, B, support, conf))
     return rules
+
+# Victor
+min_support = 0.02    
+min_confidence = 0.3  
+
+freq_itemsets = apriori(transactions, min_support)
+rules = generate_rules(freq_itemsets, min_confidence)
+
+rules_df = pd.DataFrame([{
+    'antecedent': set(a),
+    'consequent': set(b),
+    'support': s,
+    'confidence': c
+} for (a, b, s, c) in rules]).sort_values(['confidence','support'], ascending=False)
+
+def recommend_by_history(user_ratings, rules_df, movies, top_n=5):
+    """
+    user_ratings: dict {movieId: rating}
+    retorna DataFrame com as top_n recomendações
+    """
+    # considera apenas filmes “gostados” pelo usuário (nota > 3)
+    liked = {mid for mid, r in user_ratings.items() if r > 3}
+    candidates = []
+    for _, row in rules_df.iterrows():
+        if row['antecedent'].issubset(liked):
+            for mid in row['consequent']:
+                if mid not in liked:
+                    candidates.append((mid, row['confidence'], row['support']))
+    if not candidates:
+        return pd.DataFrame()  
+    df_cand = pd.DataFrame(candidates, columns=['movieId','confidence','support'])
+    df_cand = df_cand.drop_duplicates('movieId')
+    df_cand = df_cand.sort_values(['confidence','support'], ascending=False).head(top_n)
+    return df_cand.merge(movies[['movieId','title']], on='movieId')[['title','confidence','support']]
+
