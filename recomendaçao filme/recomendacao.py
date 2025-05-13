@@ -100,3 +100,62 @@ def recommend_by_history(user_ratings, rules_df, movies, top_n=5):
     df_cand = df_cand.sort_values(['confidence','support'], ascending=False).head(top_n)
     return df_cand.merge(movies[['movieId','title']], on='movieId')[['title','confidence','support']]
 
+# Gio
+def main():
+    print("Sistema de Recomendação Manga Play")
+    print("Por favor, avalie 5 filmes diferentes (nota 0 a 5).")
+    
+    # Coleta avaliações do usuário
+    user_ratings = {}
+
+    # loop para coletar informações sobre 5 filmes
+    while len(user_ratings) < 5:
+        busca = input(f"\nFilme {len(user_ratings)+1}: digite o nome (ou parte dele): ").strip()
+        matches = movies[movies['title'].str.contains(busca, case=False, regex=False)]
+        if matches.empty:
+            print("  ❌ Nenhum filme encontrado com esse nome. Tente novamente.")
+            continue
+
+        # se só encontrou 1, pula direto pra nota
+        if len(matches) == 1:
+            movie_id = matches.iloc[0]['movieId']
+            movie_title = matches.iloc[0]['title']
+            print(f"  Selecionado automaticamente: {movie_title}")
+        else:
+             # caso tenha mais de um filme com o mesmo nome
+            options = matches.head(5).reset_index(drop=True)
+            for i, row in options.iterrows():
+                print(f"  [{i+1}] {row['title']}")
+            sel = input(f"  Escolha o filme (1 a {len(options)}): ").strip()
+            try:
+                idx = int(sel) - 1
+                if not (0 <= idx < len(options)):
+                    raise ValueError()
+                movie_id = options.loc[idx, 'movieId']
+                movie_title = options.loc[idx, 'title']
+            except:
+                print("  ❌ Seleção inválida. Tente de novo.")
+                continue
+
+        # nota
+        try:
+            nota = float(input(f"  Nota para '{movie_title}' (0.0 a 5.0): ").replace(',', '.'))
+            if not (0 <= nota <= 5):
+                raise ValueError()
+        except:
+            print("  ❌ Nota inválida. Use um número entre 0 e 5.")
+            continue
+
+        user_ratings[movie_id] = nota
+        print(f"  👍 Registrado: {movie_title} -> {nota}")
+    recs = recommend_by_history(user_ratings, rules_df, movies, top_n=5)
+    if recs.empty:
+        print("\nNão foi possível gerar recomendações com base nos seus gostos.")
+    else:
+        print("\nRecomendações para você:")
+        for _, row in recs.iterrows():
+            print(f" - {row['title']} (confiança {row['confidence']:.2f}, suporte {row['support']:.2f})")
+
+ # para executar apenas quando for rodado diretamente, e nao importado
+if __name__ == '__main__':
+    main()
